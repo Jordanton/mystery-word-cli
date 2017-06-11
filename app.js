@@ -16,13 +16,8 @@ module.exports.run = (flags) => {
 
     const game = new Game(level)
     game.init()
-    // console.log('\nNumber of Guesses: ', numOfGuesses)
-    // console.log('Correct Anwer: ', correctAnswer)
-    // console.log('Display Array\'size: ', displayArray.length)
-    // console.log('Display Array: ', displayArray)
+
 }
-// console.log(wordArray.easy)
-// console.log(wordArray.hard)
 
 // Global variables
 let
@@ -46,12 +41,12 @@ class Game {
         this.difficulty = difficulty
 
         if (difficulty === 'easy') {
+
             answer = words.easy[Math.floor(Math.random() * (words.easy.length + 1))]
-            // console.log('Easy Word: ', answer)
         }
         else if (difficulty === 'hard') {
+            
             answer = words.hard[Math.floor(Math.random() * (words.hard.length + 1))]
-            // console.log('Hard Word: ', answer)
         }
     }
 
@@ -62,7 +57,6 @@ class Game {
         displayArray = [answer.length]
 
         lettersArray = answer.toUpperCase().split('')
-        // console.log(lettersArray)
 
         for (let i = 0; i < answer.length; i++) {
             displayArray[i] = '_ '
@@ -98,7 +92,6 @@ class Game {
             choices: [ 'Guess a letter', 'Get a hint', 'View guessed letters' ]
         } ]).then((selection) => {
 
-            // console.log(valuesArray.join(' '))
             if (selection.choice === 'Guess a letter') {
                 this.guessedLetter()
             }
@@ -109,6 +102,7 @@ class Game {
                 this.displaySelection()
 
                 if (correctAnswer < 1) {
+
                     console.log(color.green('\n--------------------------------------\n'))
                     console.log(color.green('\tCONGRATS!\n'))
                     console.log(color.green('--------------------------------------\n'))
@@ -117,7 +111,7 @@ class Game {
                 }
             }
             else if (selection.choice === 'View guessed letters') {
-                // console.log('\t' + guessedLettersArray.join(' '))
+
                 this.displayGuessedLetter(guessedLettersArray)
 
                 this.displayGame(displayArray.join(' '))
@@ -140,15 +134,12 @@ class Game {
                 numOfGuesses--
             }
 
-            // console.log(numOfGuesses)
-
             for (let i = 0; i < answer.length; i++) {
+
                 if (input.letter.toUpperCase() === lettersArray[i]) {
                     displayArray[i] = input.letter.toUpperCase()
 
                     correctAnswer--
-                    // console.log('Answer: ', lettersArray[i])
-                    // console.log('Guess: ', input.letter)
                 }
             }
 
@@ -157,6 +148,7 @@ class Game {
             this.displaySelection()
 
             if (correctAnswer < 1) {
+
                 console.log(color.green('\n--------------------------------------\n'))
                 console.log(color.green('\tCONGRATS!\n'))
                 console.log(color.green('--------------------------------------\n'))
@@ -164,6 +156,7 @@ class Game {
                 this.repeat()
             }
             else if (numOfGuesses < 1) {
+
                 console.log(color.red('\n--------------------------------------\n'))
                 console.log(color.red('\tGAME OVER!'))
                 console.log(color.red('--------------------------------------\n'))
@@ -177,10 +170,10 @@ class Game {
 
         let letter = valuesArray[count]
         for (let i = 0; i < lettersArray.length; i++) {
+
             if ( (letter === lettersArray[i]) && (displayArray[i] === '_ ') ) {
                 displayArray[i] = letter
                 correctAnswer--
-                // console.log(correctAnswer)
             }
         }
 
