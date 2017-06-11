@@ -1,0 +1,15 @@
+{
+  "name": "mystery-word-cli",
+  "version": "1.0.0",
+  "description": "mystery word game",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jordan",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^3.0.5",
+    "yargs": "^6.6.0"
+  }
+}
